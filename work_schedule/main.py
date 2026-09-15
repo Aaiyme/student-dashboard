@@ -16,13 +16,12 @@ app.add_middleware(
 
 DB_FILE = "work_schedule/database.db"
 
-# --- DATABASE INITIALIZATION ---
 def init_db():
     """Creates the database file and tables if they do not exist."""
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     
-    # 1. Create Users Table
+  
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -31,7 +30,7 @@ def init_db():
         )
     """)
     
-    # 2. Create Subjects Table
+
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS subjects (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -40,7 +39,7 @@ def init_db():
         )
     """)
     
-    # 3. Create Tasks Table (with foreign key cascading delete)
+
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS tasks (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -49,9 +48,7 @@ def init_db():
             status TEXT DEFAULT 'pending',
             FOREIGN KEY (subject_id) REFERENCES subjects (id) ON DELETE CASCADE
         )
-    """)
-    
-    # Seed default user if table is empty
+    """)    
     cursor.execute("SELECT COUNT(*) FROM users")
     if cursor.fetchone()[0] == 0:
         cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", ("Hayme", "Password"))
@@ -62,10 +59,10 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Initialize database file immediately upon startup
+
 init_db()
 
-# --- DATA VALIDATION MODELS ---
+
 class LoginModel(BaseModel):
     username: str
     password: str
@@ -81,7 +78,6 @@ class TaskModel(BaseModel):
 class TaskStatusUpdate(BaseModel):
     status: str
 
-# --- API ENDPOINTS ---
 
 @app.post("/login")
 def login(data: LoginModel):
@@ -104,20 +100,19 @@ def get_subjects():
     cursor.execute("SELECT id, name, code FROM subjects")
     rows = cursor.fetchall()
     conn.close()
-    
-    # Structure the flat database tuples into clean JSON objects for frontend
+   
     return [{"id": row[0], "name": row[1], "code": row[2]} for row in rows]
 
 
 @app.post("/subjects")
 def add_subject(data: SubjectModel):
-    # Connects to your local SQLite database file
+   
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     
-    # Inserts the new subject name and code using standard SQLite format (?)
+   
     cursor.execute("INSERT INTO subjects (name, code) VALUES (?, ?)", (data.name, data.code))
-    new_id = cursor.lastrowid # Grabs the newly generated ID
+    new_id = cursor.lastrowid
     
     conn.commit()
     conn.close()
@@ -132,7 +127,7 @@ def delete_subject(sub_id: int):
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     
-    # Enforce foreign key constraints inside SQLite explicitly
+  
     cursor.execute("PRAGMA foreign_keys = ON")
     cursor.execute("DELETE FROM subjects WHERE id = ?", (sub_id,))
     

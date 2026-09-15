@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <header class="app-header">
-        <h1>Dashboard</h1>
+        <h1>🎒 University Hub Dashboard</h1>
         <button onclick="handleLogout()" class="danger-btn">Logout ➔</button>
       </header>
 
@@ -49,24 +49,16 @@
           Subject Title
         </h2>
 
-        <div class="card">
-          <h2>➕ Add New Course Subject</h2>
-          <div style="display: flex; gap: 10px; margin-bottom: 10px">
-            <!-- 📝 Make sure id="sub-code-input" is exact! -->
+        <div class="card" style="margin-bottom: 20px">
+          <h3>➕ Add Task for this Subject</h3>
+          <div style="display: flex; gap: 10px">
             <input
               type="text"
-              id="sub-code-input"
-              placeholder="Code (e.g., CS-301)"
+              id="task-title-input"
+              placeholder="Task description..."
               style="flex: 1"
             />
-            <!-- 📝 Make sure id="sub-name-input" is exact! -->
-            <input
-              type="text"
-              id="sub-name-input"
-              placeholder="Subject Name"
-              style="flex: 2"
-            />
-            <button onclick="addSubject()">Create</button>
+            <button onclick="addTask()">Add Assignment</button>
           </div>
         </div>
 
@@ -83,7 +75,6 @@
       </div>
     </div>
 
-    <!-- Links our modular external javascript file -->
     <script src="static/app.js" defer></script>
   </body>
 </html>

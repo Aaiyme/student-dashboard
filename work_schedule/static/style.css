@@ -80,9 +80,7 @@ body {
 }
 
 .login-card h2 span {
-  color: var(
-    --gold-accent
-  ); /* Highlights the sunflower emoji or specific word */
+  color: var(--gold-accent);
 }
 
 .form-group {
