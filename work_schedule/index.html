@@ -49,16 +49,24 @@
           Subject Title
         </h2>
 
-        <div class="card" style="margin-bottom: 20px">
-          <h3>➕ Add Task for this Subject</h3>
-          <div style="display: flex; gap: 10px">
+        <div class="card">
+          <h2>➕ Add New Course Subject</h2>
+          <div style="display: flex; gap: 10px; margin-bottom: 10px">
+            <!-- 📝 Make sure id="sub-code-input" is exact! -->
             <input
               type="text"
-              id="task-title-input"
-              placeholder="Task description..."
+              id="sub-code-input"
+              placeholder="Code (e.g., CS-301)"
               style="flex: 1"
             />
-            <button onclick="addTask()">Add Assignment</button>
+            <!-- 📝 Make sure id="sub-name-input" is exact! -->
+            <input
+              type="text"
+              id="sub-name-input"
+              placeholder="Subject Name"
+              style="flex: 2"
+            />
+            <button onclick="addSubject()">Create</button>
           </div>
         </div>
 

@@ -42,17 +42,34 @@ async function fetchSubjects() {
 async function addSubject() {
   const name = document.getElementById("sub-name-input").value;
   const code = document.getElementById("sub-code-input").value;
-  if (!name || !code) return;
 
-  await fetch(`${API_URL}/subjects`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, code }),
-  });
+  // Safety check: if fields are empty, stop running so we don't send blank data
+  if (!name || !code) {
+    alert("Please fill up both the Subject Name and Course Code fields!");
+    return;
+  }
 
-  document.getElementById("sub-name-input").value = "";
-  document.getElementById("sub-code-input").value = "";
-  fetchSubjects();
+  try {
+    const response = await fetch(`${API_URL}/subjects`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, code }),
+    });
+
+    if (!response.ok) throw new Error("Backend server rejected the request");
+
+    // Clear out the text inputs so they are ready for the next subject
+    document.getElementById("sub-name-input").value = "";
+    document.getElementById("sub-code-input").value = "";
+
+    // Refresh your dashboard list to display the newly created subject card instantly
+    fetchSubjects();
+  } catch (err) {
+    console.error("Error creating subject:", err);
+    alert(
+      "Failed to create subject. Make sure your Render backend server is fully awake!",
+    );
+  }
 }
 
 async function deleteSubject(id) {
