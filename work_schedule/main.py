@@ -111,13 +111,20 @@ def get_subjects():
 
 @app.post("/subjects")
 def add_subject(data: SubjectModel):
+    # Connects to your local SQLite database file
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
+    
+    # Inserts the new subject name and code using standard SQLite format (?)
     cursor.execute("INSERT INTO subjects (name, code) VALUES (?, ?)", (data.name, data.code))
-    new_id = cursor.lastrowid
+    new_id = cursor.lastrowid # Grabs the newly generated ID
+    
     conn.commit()
     conn.close()
+    
     return {"id": new_id, "name": data.name, "code": data.code}
+
+
 
 
 @app.delete("/subjects/{sub_id}")
