@@ -1,4 +1,4 @@
-const API_URL = "https://onrender.com";
+const API_URL = "https://student-dashboard-mtze.onrender.com";
 
 let currentSubjectId = null;
 
