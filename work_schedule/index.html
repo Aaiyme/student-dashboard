@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Schedule & Task Manager</title>
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="app-header">
+        <h1>Dashboard</h1>
+        <button onclick="handleLogout()" class="danger-btn">Logout ➔</button>
+      </header>
+
+      <!-- VIEW A: SUBJECTS LISTING -->
+      <div id="subjects-dashboard">
+        <div class="card">
+          <h2>➕ Add New Course Subject</h2>
+          <div style="display: flex; gap: 10px; margin-bottom: 10px">
+            <input
+              type="text"
+              id="sub-code-input"
+              placeholder="Code (e.g., CS-301)"
+              style="flex: 1"
+            />
+            <input
+              type="text"
+              id="sub-name-input"
+              placeholder="Subject Name"
+              style="flex: 2"
+            />
+            <button onclick="addSubject()">Create</button>
+          </div>
+        </div>
+
+        <h2 style="margin-top: 30px">📅 My Academic Subjects</h2>
+        <div id="subjects-grid" class="grid-layout">
+          <!-- JS dynamically injects subject cards here -->
+        </div>
+      </div>
+
+      <!-- VIEW B: SPECIFIC SUBJECT TASKS -->
+      <div id="subject-details-view" class="hidden">
+        <button onclick="backToDashboard()" class="secondary-btn">
+          ⬅ Back to Dashboard
+        </button>
+        <h2 id="active-subject-title" style="margin-top: 20px; color: #2c3e50">
+          Subject Title
+        </h2>
+
+        <div class="card" style="margin-bottom: 20px">
+          <h3>➕ Add Task for this Subject</h3>
+          <div style="display: flex; gap: 10px">
+            <input
+              type="text"
+              id="task-title-input"
+              placeholder="Task description..."
+              style="flex: 1"
+            />
+            <button onclick="addTask()">Add Assignment</button>
+          </div>
+        </div>
+
+        <div class="task-columns">
+          <div class="card">
+            <h3 style="color: #d9534f">⏳ Pending Works</h3>
+            <div id="pending-tasks-list"></div>
+          </div>
+          <div class="card">
+            <h3 style="color: #5cb85c">✅ Completed Works</h3>
+            <div id="completed-tasks-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Links our modular external javascript file -->
+    <script src="static/app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,287 @@
+/* ==========================================
+   🎨 3-COLOR AESTHETIC PALETTE (Sunflower Minimalist)
+   ========================================== */
+:root {
+  --bg-dark: #f7df5b; /* Midnight Charcoal Base */
+  --card-white: #ffffff; /* Pure Matte White */
+  --gold-accent: #ffb703; /* Sun-Kissed Gold Accent */
+  --text-dark: #1e1e24; /* Off-Black Typography */
+}
+
+/* ==========================================
+   1. GLOBAL STYLES & SHARED UTILITIES
+   ========================================== */
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f7f9fb;
+  margin: 0;
+  padding: 20px;
+  color: var(--text-dark);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card-white);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  margin-bottom: 20px;
+  border: 1px solid #eef2f5;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================
+   2. 🌻 THE AESTHETIC LOGIN PORTAL 
+   ========================================== */
+.auth-body {
+  background: var(--bg-dark);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 360px;
+  padding: 40px;
+  background: var(--card-white);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.login-card h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: var(--text-dark);
+  font-size: 1.6em;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.login-card h2 span {
+  color: var(
+    --gold-accent
+  ); /* Highlights the sunflower emoji or specific word */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6c757d;
+}
+
+.form-group input,
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  box-sizing: border-box;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1em;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: var(--gold-accent);
+  background: var(--card-white);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 183, 3, 0.15);
+}
+
+.login-card button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: var(--gold-accent);
+  color: var(--bg-dark);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1em;
+  transition: all 0.2s ease;
+}
+
+.login-card button:hover {
+  background: #c4a044; /* Subtle deeper gold drop shadow */
+  transform: translateY(-1px);
+}
+
+.login-card button:active {
+  transform: translateY(1px);
+}
+
+.error-text {
+  color: #d9534f;
+  font-weight: 600;
+  font-size: 0.85em;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ==========================================
+   3. UNIVERSITY HUB DASHBOARD STYLES
+   ========================================== */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 20px;
+}
+
+.app-header h1 {
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+h2 {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+  color: var(--text-dark);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.subject-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 4px solid var(--gold-accent); /* Styled top border instead of side */
+  transition: all 0.2s ease;
+}
+
+.subject-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.badge {
+  background: #e2e8f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 700;
+  color: #4a5568;
+}
+
+/* ==========================================
+   4. TASK MANAGEMENT VIEW STYLES
+   ========================================== */
+.task-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.item {
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #a0aec0;
+}
+
+/* ==========================================
+   5. UNIFIED SYSTEM BUTTONS
+   ========================================== */
+button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: var(--bg-dark);
+  color: var(--card-white);
+  font-weight: 600;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.danger-btn {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.danger-btn:hover {
+  background: #fca5a5;
+  color: #b91c1c;
+}
+
+.secondary-btn {
+  background: #edf2f7;
+  color: #4a5568;
+}
+
+.compact-btn {
+  padding: 6px 12px;
+  font-size: 0.8em;
+  margin-top: 15px;
+  align-self: flex-start;
+}
+
+.toggle-btn {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 6px 12px;
+  font-size: 0.8em;
+}
+
+.toggle-btn.completed-style {
+  background: #fef3c7;
+  color: #92400e;
+}
